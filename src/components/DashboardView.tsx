@@ -54,9 +54,6 @@ export const DashboardView: React.FC = () => {
     updateRawDistricts
   } = useApp();
 
-  // Date range selector state
-  const [dateRange, setDateRange] = useState<'7D' | '30D' | '90D'>('30D');
-
   // Map layer toggle: including official VEDAS Krishi-DSS satellite products
   const [mapLayer, setMapLayer] = useState<'deficit' | 'moisture' | 'vedas_spi' | 'vedas_vci' | 'tankers'>('deficit');
 
@@ -298,26 +295,8 @@ export const DashboardView: React.FC = () => {
           </p>
         </div>
 
-        {/* Action Controls: Flat Segmented Date Control + VEDAS Sync & Relief Buttons */}
+        {/* Action Controls: Live AI Advisor & Relief Deployment Buttons */}
         <div className="flex flex-wrap items-center gap-2.5">
-          {/* Flat Date Range Segmented Control */}
-          <div className="flex items-center bg-[#F1F3F5] p-0.5 rounded-md border border-[#E3E6EB]">
-            {(['7D', '30D', '90D'] as const).map(range => (
-              <button
-                key={range}
-                type="button"
-                onClick={() => setDateRange(range)}
-                className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
-                  dateRange === range
-                    ? 'bg-white text-[#111827] shadow-[0_1px_2px_rgba(16,24,40,0.06)]'
-                    : 'text-[#4B5563] hover:text-[#111827]'
-                }`}
-              >
-                {range}
-              </button>
-            ))}
-          </div>
-
           {/* Live AI Drought Advisor Action */}
           <button
             type="button"
